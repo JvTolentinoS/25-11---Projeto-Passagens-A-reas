@@ -34,31 +34,12 @@ namespace _25_11___Projeto_Passagens_A_reas
             switch(menu)
             {   
                 case 1:
-                //Cadastro
-                    do{
-                        CadastroProdutos();
-                        Console.WriteLine("Inserir um novo passageiro? Sim/Nao?");
-                        resposta = Console.ReadLine();
-                        if(resposta == "Nao"){
-                            MenuInicial();
-                        }
-                    }while (resposta == "Sim");
+                CadastroProdutos();
                 break;
 
                 //Lista
                 case 2:
-                do{
-                    for(var i = 0; i < 5; i++)
-                    {
-                        Console.WriteLine($"Passageiro {nome[i]} - Origem {origem[i]} - Destino {destino[i]} - Data de voo {data[i]}");
-                    }
-                    Console.WriteLine("Voltar para o menu inicial? Sim/Nao?");
-                    resposta = Console.ReadLine();
-                    if(resposta == "Sim"){
-                            MenuInicial();
-                        }
-                    }while (resposta == "Nao");
-
+                ListarProduto();
                 break;
 
                 case 3:
@@ -77,6 +58,7 @@ namespace _25_11___Projeto_Passagens_A_reas
         }
         
         void CadastroProdutos(){
+            do{
             if(contador<5){
             Console.WriteLine($"Digite o nome do {contador+1}° Passageiro");
             nome[contador] = Console.ReadLine();
@@ -90,10 +72,64 @@ namespace _25_11___Projeto_Passagens_A_reas
         }else{
             Console.WriteLine("Limite excedido de passagens");
         }
-        }
-        
-    }
+            Console.WriteLine("Gostaria de cadastrar mais passageiros?");
+            resposta = Console.ReadLine();
+            if(resposta == "Nao"){MenuInicial();}
+        }while (resposta == "Sim");
 
+        switch(menu)
+            {   
+                case 1:
+                CadastroProdutos();
+                break;
+
+                //Lista
+                case 2:
+                ListarProduto();
+                break;
+
+                case 3:
+                break;
+                default: Console.WriteLine("O sistema foi suspenso com sucesso.");
+                break;
+                
+        }while (menu != 3);
+
+        }
+    
+        void ListarProduto(){
+            do{
+            for(var i = 0; i < 5; i++)
+            {
+            Console.WriteLine($"Passageiro {nome[i]} - Origem {origem[i]} - Destino {destino[i]} - Data {data[i]}");
+            }
+            Console.WriteLine("Voltar para o menu inicial? Sim/Nao?");
+            resposta = Console.ReadLine();
+            if(resposta == "Sim"){
+                MenuInicial();
+                }
+            }while (resposta == "Nao");
+
+            switch(menu)
+            {   
+                case 1:
+                CadastroProdutos();
+                break;
+
+                //Lista
+                case 2:
+                ListarProduto();
+                break;
+
+                case 3:
+                break;
+                default: Console.WriteLine("O sistema foi suspenso com sucesso.");
+                break;
+                
+        }while (menu != 3); 
+        }
 }
 }
+}
+
 
